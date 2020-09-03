@@ -26,7 +26,7 @@ describe('Thermostat', function(){
     expect(thermostat.displayTemperature()).toEqual(10);
   });
 
-  it('dafaults with power saving mode set to on', function(){
+  it('defaults with power saving mode set to on', function(){
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
   });
 
@@ -39,6 +39,14 @@ describe('Thermostat', function(){
     thermostat.switchPowerSavingModeOff();
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.isPowerSavingModeOn()).toBe(true)
+  });
+
+  it('resets temperature to the default value of 20 degrees', function(){
+    thermostat.up();
+    thermostat.up();
+    expect(thermostat.displayTemperature()).toEqual(22);
+    thermostat.reset();
+    expect(thermostat.displayTemperature()).toEqual(20);
   });
 
     describe('when power saving mode is on', function(){
