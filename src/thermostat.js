@@ -52,7 +52,19 @@ class Thermostat {
   };
 
   reset(){
-    this.temperature = this.DEFAULT_TEMP
+    this.temperature = this.DEFAULT_TEMP;
+  };
+
+  energyUsage(){
+    if (this.temperature < 18){
+      return 'Low-Usage';
+    }
+    else if (this.temperature <= 25) {
+      return 'Medium-Usage';
+    }
+    else {
+      return 'High-Usage';
+    }
   };
 
 };

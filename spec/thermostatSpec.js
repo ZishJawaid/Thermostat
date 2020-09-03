@@ -49,6 +49,27 @@ describe('Thermostat', function(){
     expect(thermostat.displayTemperature()).toEqual(20);
   });
 
+    describe('Energy usage', function(){
+      it('displays medium usage when temp <= 25', function(){
+        expect(thermostat.energyUsage()).toEqual('Medium-Usage');
+      });
+      
+      it('displays low usage when temp < 18', function(){
+        for (var i = 0; i < 4; i++) {
+          thermostat.down()
+        }
+        expect(thermostat.energyUsage()).toEqual('Low-Usage');
+      });
+
+      it('displays high usage when temp > 26', function(){
+        thermostat.switchPowerSavingModeOff();
+        for (var i = 0; i < 7; i++){
+          thermostat.up();
+        }
+        expect(thermostat.energyUsage()).toEqual('High-Usage');
+      });
+  });
+
     describe('when power saving mode is on', function(){
       it('sets a max temp of 25 degrees', function(){
         for(var i = 0; i < 6; i++) {
