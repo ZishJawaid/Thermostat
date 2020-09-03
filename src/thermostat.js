@@ -9,8 +9,10 @@ class Thermostat {
     return this.temperature;
   };
 
-  up(){
-    
+  up() {
+    if(this.isMaxTemperature()) {
+      return;
+    }
     this.temperature += 1;
   };
 
@@ -38,4 +40,12 @@ class Thermostat {
   switchPowerSavingModeOn(){
     this.powerSavingMode = true;
   };
+
+  isMaxTemperature(){
+    if(this.isPowerSavingModeOn() === true){
+      return this.temperature === 25;
+    }
+      return this.temperature === 32;
+  };
+
 };
